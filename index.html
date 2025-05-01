@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MikroTik Web Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 MikroTik Web Tool</h1>
+        
+        <!-- Connection Status -->
+        <div class="status-box" id="internet-status">
+            <span>🌐 Internet: Checking...</span>
+        </div>
+        
+        <!-- Tab Navigation -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab('ping-tab')">Ping</button>
+            <button class="tab-btn" onclick="openTab('port-tab')">Port Check</button>
+            <button class="tab-btn" onclick="openTab('mikrotik-tab')">MikroTik</button>
+        </div>
+        
+        <!-- Ping Tab -->
+        <div id="ping-tab" class="tab-content active">
+            <input type="text" id="ping-ip" placeholder="8.8.8.8">
+            <button onclick="pingIp()">Ping</button>
+            <pre id="ping-result">Results will appear here...</pre>
+        </div>
+        
+        <!-- Port Check Tab -->
+        <div id="port-tab" class="tab-content">
+            <input type="text" id="port-ip" placeholder="192.168.88.1">
+            <input type="number" id="port-number" placeholder="8728" min="1" max="65535">
+            <button onclick="checkPort()">Check Port</button>
+            <div id="port-result"></div>
+        </div>
+        
+        <!-- MikroTik Tab -->
+        <div id="mikrotik-tab" class="tab-content">
+            <div class="form-group">
+                <input type="text" id="mkt-ip" placeholder="IP (e.g., 192.168.88.1)">
+                <input type="number" id="mkt-port" placeholder="Port (default: 8728)" value="8728">
+            </div>
+            <div class="form-group">
+                <input type="text" id="mkt-user" placeholder="Username (e.g., admin)">
+                <input type="password" id="mkt-pass" placeholder="Password">
+            </div>
+            <button onclick="connectMikrotik()">Connect</button>
+            <div id="mkt-status"></div>
+            <button id="fetch-info-btn" onclick="fetchSystemInfo()" disabled>Fetch System Info</button>
+            <pre id="system-info">Not connected...</pre>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
